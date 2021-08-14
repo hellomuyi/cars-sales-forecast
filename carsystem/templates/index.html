@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+		<title>车情六处</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
+		<link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+		<!--[if lt IE 9]>
+		<script src="{% static 'js/ie-support/html5.js' %}"></script>
+		<script src="{% static 'js/ie-support/respond.js' %}"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+
+		<div id="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="/index" id="branding">
+						<img src="{% static 'images/logo.png' %}" alt="" class="logo">
+						<div class="logo-text">
+							<h1 class="site-title">车情六处</h1>
+							<small class="site-description">预见未来</small>
+						</div>
+					</a> <!-- #branding -->
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item"><a href="/userroom">关于我们</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</div> <!-- .site-header -->
+
+			<div class="hero hero-slider">
+				<ul class="slides">
+					<li data-bg-image="{% static 'dummy/汽车背景1.jpg' %}">
+						<div class="container">
+							<div class="slide-title">
+								<span>纵观</span> <br>
+								<span>汽车市场销售趋势</span>
+							</div>
+						</div>
+					</li>
+					<li data-bg-image="{% static 'dummy/汽车背景4.jpg' %}">
+						<div class="container">
+							<div class="slide-title">
+								<span>推荐</span> <br>
+								<span>市场近期热门车型</span>
+							</div>
+						</div>
+					</li>
+					<li data-bg-image="{% static 'dummy/汽车背景5.jpg' %}">
+						<div class="container">
+							<div class="slide-title">
+								<span>做出</span> <br>
+								<span>属于你自己的选择</span>
+							</div>
+						</div>
+					</li>
+				</ul> <!-- .slides -->
+			</div> <!-- .hero-slider -->
+
+			<main class="main-content">
+				<div class="fullwidth-block latest-projects-section">
+					<div class="container">
+						<h2 class="section-title">系统功能</h2>
+						<div class="row">
+							<div class="col-sm-6 col-md-3">
+								<div class="project">
+									<figure class="project-thumbnail"><img src="{% static 'dummy/车型一览.jpg' %}" alt="Project 1"></figure>
+									<ul class="menu">
+										<li class="menu-item"><a href="/carshow">车型一览</a></li>
+									</ul> <!-- .menu -->
+									<p>全天下的车型，在此一览无余</p>
+								</div>
+
+
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="project">
+									<figure class="project-thumbnail"><img src="{% static 'dummy/热门车型.jpg' %}" alt="Project 2"></figure>
+									<ul class="menu">
+										<li class="menu-item"><a href="/popularcar">热门车型</a></li>
+									</ul> <!-- .menu -->
+									<p>你之所爱，此处皆有</p>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="project">
+									<figure class="project-thumbnail"><img src="{% static 'dummy/销量排行.jpg' %}" alt="Project 3"></figure>
+									<ul class="menu">
+										<li class="menu-item"><a href="/sale">销量排行</a></li>
+									</ul> <!-- .menu -->
+									<p>来看看你的爱车，是否上榜</p>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="project">
+									<figure class="project-thumbnail"><img src="{% static 'dummy/销量预测.jpg' %}" alt="Project 4"></figure>
+									<ul class="menu">
+										<li class="menu-item"><a href="/predict1">销量预测</a></li>
+									</ul> <!-- .menu -->
+									<p>精准预测未来车势</p>
+								</div>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</div> <!-- .fullwidth-block.latest-projects-section -->
+
+
+			</main> <!-- .main-content -->
+
+			<footer class="site-footer">
+				<div class="container">
+					<div class="pull-left">
+
+						<address>
+							<strong>车情六处</strong>
+							<p>南湖 CCNU</p>
+						</address>
+
+						<a href="#" class="phone">8671-9999</a>
+					</div> <!-- .pull-left -->
+					<div class="pull-right">
+
+						<div class="social-links">
+							<a href="#"><i class="fa fa-renren"></i></a>
+							<a href="#"><i class="fa fa-weibo"></i></a>
+							<a href="#"><i class="fa fa-comments"></i></a>
+
+						</div>
+
+					</div> <!-- .pull-right -->
+
+					<div class="colophon">Copyright 2021 车情六处. 设计自 <a href="http://www.baidu.com/" title="设计自 www.baidu.com" target="_blank">www.baidu.com</a>版权所有</div>
+
+				</div> <!-- .container -->
+			</footer> <!-- .site-footer -->
+		</div>
+
+		<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+		<script src="{% static 'js/plugins.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
+
+	</body>
+
+</html>

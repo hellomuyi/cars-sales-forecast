@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		<style>
+		#div1{
+		position:absolute;
+		top:430px;
+		left:1100px;
+		}
+		</style>
+		<title>车情六处-销量预测</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
+		<link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+		<!--[if lt IE 9]>
+		<script src="{% static 'js/ie-support/html5.js' %}"></script>
+		<script src="{% static 'js/ie-support/respond.js' %}"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+
+		<div id="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="/index" id="branding">
+						<img src="{% static 'images/logo.png' %}" alt="" class="logo">
+						<div class="logo-text">
+							<h1 class="site-title">销量预测</h1>
+							<!--<small class="site-description">Tagline goes here</small>-->
+						</div>
+					</a> <!-- #branding -->
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item"><a href="/index">主页</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</div> <!-- .site-header -->
+
+			<main class="main-content">
+
+				<div class="page">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="project-detail">
+									<form action="/predict/" method="POST">
+										{% csrf_token %}
+										<div class="form-group">
+											<label for="id_carclass">预测车型：</label>
+											<input type="number" name='carclass' class="form-control" id="id_carclass" placeholder="735971/425432" />
+										</div>
+										<div class="form-group">
+											<label for="id_ranliao">燃料类型：</label>
+											<input type="number" name='ranliao' class="form-control" id="id_ranliao" placeholder="1/2/3/4" />
+										</div>
+										<div class="form-group">
+											<label for="id_qudong">驱动形式：</label>
+											<input type="number" name='qudong' class="form-control" id="id_qudong" placeholder="1/2/3" />
+										</div>
+										<div class="form-group">
+											<label for="id_jiage">销售价格：</label>
+											<input type="text" name='jiage' class="form-control" id="id_jiage" placeholder="12.5" />
+										</div>
+										<div class="form-group">
+											<label for="id_gaodu">车辆高度：</label>
+											<input type="number" name='gaodu' class="form-control" id="id_gaodu" placeholder="1463" />
+										</div>
+										<div class="form-group">
+											<label for="id_zaike">额定载客：</label>
+											<input type="number" name='zaike' class="form-control" id="id_zaike" placeholder="5" />
+										</div>
+										<div class="form-group">
+											<label for="id_paifang">排放标准：</label>
+											<input type="number" name='paifang' class="form-control" id="id_paifang" placeholder="1" />
+										</div>
+										<div class="form-group">
+											<label for="id_zengya">是否增压：</label>
+											<input type="number" name='zengya' class="form-control" id="id_zengya" placeholder="0" />
+										</div>
+										<div>
+										  <button type="submit" class="btn btn-primary float-right"><font color="white">预测</font></button>
+										</div>
+        							</form>
+								</div>
+							</div>
+
+
+							<div class="col-md-8">
+								<h2 class="section-title">
+									<br>
+								</h2>
+								<font color="white"><p><big><big><big> <big><big><big><big>预测下个月该车销量为</big> </big></big></big></big></big></big></p></font>
+								<font color="yellow"><p><big><big><big> <big><big><big><big><big><big>&emsp;&emsp;&ensp;{{ carnum }}</big></big> </big></big></big></big></big></big></big></p></font>
+							</div>
+
+							<div>
+								<p>预测车型：&nbsp;{{ class1 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;燃料类型：&nbsp;{{ ranliao1 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;驱动形式：&nbsp;{{ qudong1 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价格：&nbsp;{{ jiage1 }}&nbsp;&nbsp;&nbsp;</p>
+								<p>车辆高度：&nbsp;{{ gaodu1 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额定载客：&nbsp;{{ zaike1 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排放标准：&nbsp;{{ paifang1 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否增压：&nbsp;{{ zengya1 }}&nbsp;&nbsp;&nbsp;</p>
+							</div>
+							<div id="div1">
+								<font color="yellow"><a href="/cardetails/{{ car.id }}"><big><big>{{ car.car_name }}</big></big></a></font>
+							</div>
+
+						</div>
+					</div>
+				</div> <!-- .page -->
+
+			</main> <!-- .main-content -->
+
+			<footer class="site-footer">
+				<div class="container">
+					<div class="pull-left">
+
+						<address>
+							<strong>车情六处</strong>
+							<p>南湖 CCNU</p>
+						</address>
+
+						<a href="#" class="联系电话">8671-9999</a>
+					</div> <!-- .pull-left -->
+					<div class="pull-right">
+
+						<div class="social-links">
+							<a href="#"><i class="fa fa-renren"></i></a>
+							<a href="#"><i class="fa fa-weibo"></i></a>
+							<a href="#"><i class="fa fa-comments"></i></a>
+						</div>
+
+					</div> <!-- .pull-right -->
+
+					<div class="colophon">Copyright 2021 车情六处 设计自 <a href="https://www.bilibili.com/bangumi/play/ss844/?from=search&seid=4477165169355933214/" title="设计自 www.pixiv.com" target="_blank">www.pixiv.com</a>施锐憨憨</div>
+
+				</div> <!-- .container -->
+			</footer> <!-- .site-footer -->
+		</div>
+
+		<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+		<script src="{% static 'js/plugins.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
+
+	</body>
+
+</html>

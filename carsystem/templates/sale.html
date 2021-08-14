@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		<title>销量排行</title>
+		<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
+		<link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+			<!-- Loading main css file -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+		<script src="{% static 'js/ie-support/html5.js' %}"></script>
+		<script src="{% static 'js/ie-support/respond.js' %}"></script>
+	</head>
+	<body>
+		<div id="site-content">
+				<div class="site-header">
+					<div class="container">
+						<a href="/index" id="branding">
+							<img src="{% static 'images/logo.png' %}" alt="" class="logo">
+							<div class="logo-text">
+								<h1 class="site-title">销量排行</h1>
+								<!--<small class="site-description">Tagline goes here</small>-->
+							</div>
+						</a> <!-- #branding -->
+
+						<!-- Default snippet for navigation -->
+						<div class="main-navigation">
+							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+							<ul class="menu">
+								<li class="menu-item"><a href="/index">主页</a></li>
+							</ul> <!-- .menu -->
+						</div> <!-- .main-navigation -->
+
+						<div class="mobile-navigation"></div>
+					</div>
+				</div> <!-- .site-header -->
+
+				<main class="main-content">
+
+		<div style="float:right;margin-right:200px;margin-top:200px">
+			<div>
+				<form class="form-login" action="/sale/" method="POST" style="font-size:25px;">
+				{% csrf_token %}
+
+				<select class="form-control m-b" name="saledate" style="color:green">
+				{% for date in datelst %}
+					<option>{{  date.sale_date  }}</option>
+				{% endfor %}
+
+				</select>
+				<button type="submit" style="font-size:20px;color:#FF6600">查看</button>
+				</form>
+			</div>
+		</div>
+		<div id="containerOne" style="width: 800px;height:600px;margin-left:150px"></div>
+		<script type="text/javascript">
+
+			var myChart = echarts.init(document.getElementById('containerOne'));
+
+
+			var option = {
+				backgroundColor: '#FFFFFF',
+				title: {
+					text: '销量排行榜'
+				},
+				tooltip: {},
+				legend: {
+					data:['销量']
+				},
+				xAxis: {
+					data: [
+						{% for i in namelst %}
+							'{{ i }}',
+						{% endfor %}
+					]
+				},
+				yAxis: {},
+				series: [{
+					name: '销量',
+					type: 'bar',
+					data: [
+						{% for i in saleinfo %}
+							'{{ i.sale_num }}',
+						{% endfor %}
+					]
+				}]
+			};
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+		</script>
+		<div>&nbsp;</div>
+		<div>&nbsp;</div>
+		{% for i in urllst %}
+			<div style="display:inline;margin-left:100px;margin-top:1500px;">
+				<a href="/cardetails/{{ i.id }}">
+					{{ i.car_name }}&nbsp;
+				</a>
+			</div>
+		{% endfor %}
+		</main> <!-- .main-content -->
+
+				<footer class="site-footer">
+					<div class="container">
+						<div class="pull-left">
+
+							<address>
+								<strong>车情六处</strong>
+								<p>南湖 CCNU</p>
+							</address>
+
+							<a href="#" class="联系电话">8671-9999</a>
+						</div> <!-- .pull-left -->
+						<div class="pull-right">
+
+							<div class="social-links">
+								<a href="#"><i class="fa fa-renren"></i></a>
+								<a href="#"><i class="fa fa-weibo"></i></a>
+								<a href="#"><i class="fa fa-comments"></i></a>
+							</div>
+
+						</div> <!-- .pull-right -->
+
+						<div class="colophon">Copyright 2021 车情六处 设计自 <a href="https://www.bilibili.com/bangumi/play/ss844/?from=search&seid=4477165169355933214/" title="设计自 www.pixiv.com" target="_blank">www.pixiv.com</a>施锐憨憨</div>
+
+					</div> <!-- .container -->
+				</footer> <!-- .site-footer -->
+			</div>
+
+			<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+			<script src="{% static 'js/plugins.js' %}"></script>
+			<script src="{% static 'js/app.js' %}"></script>
+	</body>
+</html>

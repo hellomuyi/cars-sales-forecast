@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+		<title>车情六处-登录</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
+		<link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+		<!--[if lt IE 9]>
+		<script src="{% static 'js/ie-support/html5.js' %}"></script>
+		<script src="{% static 'js/ie-support/respond.js' %}"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+
+		<div id="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="/login1" id="branding">
+						<img src="{% static 'images/logo.png' %}" alt="" class="logo">
+						<div class="logo-text">
+							<h1 class="site-title">车情六处</h1>
+							<small class="site-description">登录</small>
+						</div>
+					</a> <!-- #branding -->
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item current-menu-item"><a href="/login">登录</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</div> <!-- .site-header -->
+
+			<main class="main-content">
+
+				<div class="page">
+					<div class="container">
+						<!--<a href="#" class="button-back"><img src="images/arrow-back.png" alt="" class="icon">Back to the projects</a>-->
+
+						<div class="row">
+							<div class="col-md-8">
+								<figure class="align-left"><img src="{% static 'images/兔子.jpg' %}" alt="mio" width="1280" height="580"></figure><!--在真诚相约左边插入图片-->
+								<div class="map"></div>
+
+								<div class="contact-detail">
+									<address>
+										<div class="contact-icon">
+											<img src="{% static 'images/icon-marker.png' %}" class="icon">
+										</div>
+										<p><strong>车情六处 </strong> <br>南湖 CCNU</p>
+									</address>
+									<a href="#" class="phone"><span class="contact-icon"><img src="{% static 'images/icon-phone.png' %}" class="icon"></span>8671-9999</a>
+									<a href="#" class="email"><span class="contact-icon"><img src="{% static 'images/icon-envelope.png' %}" class="icon"></span> www.cheqingliuchu.com</a>
+								</div>
+							</div>
+							<div class="col-md-3 col-md-offset-1">
+								<div class="contact-form">
+									<h2 class="section-title"></h2>
+									<p><font color="black">真诚相约每一天</font></p>
+
+									<form class="form-login" action="/login/" method="POST">
+										  {% csrf_token %}
+										  {% if message %}
+											<div>{{ message }}</div>
+										  {% endif %}
+
+										  <h3 style="font-size:30px;color:#0033FF">欢迎登录</h3>
+										  <div>
+											<label for="id_username" style="font-size:15px;color:#555555">用户名：</label>
+											<input type="text" name='username' class="form-control" id="id_username" placeholder="Username" autofocus required>
+										  </div>
+										  <div>
+											<label for="id_password" style="font-size:15px;color:#555555">密码：</label>
+											<input type="password" name='password' class="form-control" id="id_password" placeholder="Password" required>
+										  </div>
+										  <div>
+										  <button type="submit" style="font-size:20px;color:#FF6600">登录</button>
+										  </div>
+									  </form>
+
+
+									<!--<form action="#">
+										<input type="text" placeholder="账号">
+										<input type="text" placeholder="密码">
+										<<input type="text" placeholder="憨批">
+										<textarea placeholder="Message..."></textarea>
+									-->
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- .page -->
+
+			</main> <!-- .main-content -->
+
+			<footer class="site-footer">
+				<div class="container">
+					<div class="pull-left">
+
+						<address>
+							<strong>车情六处</strong>
+							<p>南湖 CCNU</p>
+						</address>
+
+						<a href="#" class="phone">8671-9999</a>
+					</div> <!-- .pull-left -->
+					<div class="pull-right">
+
+						<div class="social-links">
+
+							<a href="#"><i class="fa fa-renren"></i></a>
+							<a href="#"><i class="fa fa-weibo"></i></a>
+							<a href="#"><i class="fa fa-comments"></i></a>
+
+						</div>
+
+					</div> <!-- .pull-right -->
+
+					<div class="colophon">Copyright 2021 车情六处 设计自 <a href="http://www.baidu.com/" title="设计自 www.pixiv.com" target="_blank">www.cheqingliuchu.com</a>版权所有</div>
+
+				</div> <!-- .container -->
+			</footer> <!-- .site-footer -->
+		</div>
+
+		<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+		<script src="{% static 'js/plugins.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
+
+	</body>
+
+</html>

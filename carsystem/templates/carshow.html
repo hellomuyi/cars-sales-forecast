@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+    <title>车型一览</title>
+
+    <!-- Loading third party fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
+    <link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/ie-support/html5.js' %}"></script>
+    <script src="{% static 'js/ie-support/respond.js' %}"></script>
+    <![endif]-->
+
+</head>
+<body>
+        <div id="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="/login1" id="branding">
+						<img src="{% static 'images/logo.png' %}" alt="" class="logo">
+						<div class="logo-text">
+							<h1 class="site-title">车情六处</h1>
+							<small class="site-description">预见未来</small>
+						</div>
+					</a>    <!-- #branding -->
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item"><a href="/index">主页</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+				<div class="mobile-navigation"></div>
+			</div>
+        </div>
+        <main class="main-content">
+
+                <div style="margin-top:100px;text-align:center">
+                    <div class="row">
+                     {% for carname in carnamelst %}
+
+
+                        <div class="col-md-3" >
+                            <a href="/cardetails/{{ carname.id }}">
+                                <img src="{{ carname.car_url }}" width="285px" height="285px">
+                                <p>{{ carname.car_name }}</p>
+                            </a>
+                        </div>
+
+                    {% endfor %}
+                    </div>
+                </div>
+            <div style="text-align:center">
+            {% if carnamelst.has_previous %}
+                <a href="/carshow/{{ carnamelst.previous_page_number }}" style="display: inline-block; padding: 5px; margin: 5px;">上一页</a>
+            {% endif %}
+
+            {% for page in pagelist %}
+                <a href="/carshow/{{ page }}" {% if cnum == page %} style="font-size:28px;color:red;" {% endif %} style="display: inline-block; padding: 5px; margin: 5px;">{{ page }}</a>
+            {% endfor %}
+
+            {% if carnamelst.has_next %}
+                <a href="/carshow/{{ carnamelst.next_page_number }}" style="display: inline-block; padding: 5px; margin: 5px;">下一页</a>
+            {% endif %}
+            </div>
+            </main>
+                <footer class="site-footer">
+				<div class="container">
+					<div class="pull-left">
+
+						<address>
+							<strong>车情六处</strong>
+							<p>南湖 CCNU</p>
+						</address>
+
+						<a href="#" class="联系方式">8671-9999</a>
+					</div> <!-- .pull-left -->
+					<div class="pull-right">
+
+						<div class="社交软件">
+
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-weibo"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+
+						</div>
+
+					</div> <!-- .pull-right -->
+
+					<div class="colophon">Copyright 2021 车情六处. 设计自 <a href="https://www.bilibili.com/bangumi/play/ss844/?from=search&seid=113825635754959603" title="设计 来自 歪比巴卜" target="_blank">www.pixiv.com</a>憨憨施锐</div>
+
+				</div> <!-- .container -->
+			</footer> <!-- .site-footer -->
+		</div>
+
+		<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+		<script src="{% static 'js/plugins.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>

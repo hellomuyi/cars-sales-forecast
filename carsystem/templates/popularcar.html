@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+		<title>车情六处-热门车型</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
+		<link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+		<!--[if lt IE 9]>
+		<script src="{% static 'js/ie-support/html5.js' %}"></script>
+		<script src="{% static 'js/ie-support/respond.js' %}"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+
+		<div id="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="/index" id="branding">
+						<img src="{% static 'images/logo.png' %}" alt="" class="logo">
+						<div class="logo-text">
+							<h1 class="site-title">热门车型</h1>
+							<!--<small class="site-description">Tagline goes here</small>-->
+						</div>
+					</a> <!-- #branding -->
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item"><a href="/index">主页</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</div> <!-- .site-header -->
+
+			<main class="main-content">
+
+				<div class="page">
+					<div class="container">
+					<!--<a href="project.html" class="button-back"><img src="images/arrow-back.png" alt="" class="icon">Back to the projects</a>-->
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="project-images">
+									<a href="/cardetails/{{ car1info.id }}">
+										<img src="{{ car1info.car_url }}" alt="" width="720" height="320">
+										<p style="text-align:center">{{ car1info.car_name }}</p>
+									</a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="project-images">
+									<a href="/cardetails/{{ car2info.id }}">
+										<img src="{{ car2info.car_url }}" alt="" width="720" height="320">
+										<p style="text-align:center">{{ car2info.car_name }}</p>
+									</a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="project-images">
+									<a href="/cardetails/{{ car3info.id }}">
+										<img src="{{ car3info.car_url }}" alt="" width="720" height="320">
+										<p style="text-align:center">{{ car3info.car_name }}</p>
+									</a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="project-images">
+									<a href="/cardetails/{{ car4info.id }}">
+										<img src="{{ car4info.car_url }}" alt="" width="720" height="320">
+										<p style="text-align:center">{{ car4info.car_name }}</p>
+									</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div> <!-- .page -->
+
+			</main> <!-- .main-content -->
+
+			<footer class="site-footer">
+				<div class="container">
+					<div class="pull-left">
+
+						<address>
+							<strong>车情六处</strong>
+							<p>南湖 CCNU</p>
+						</address>
+
+						<a href="#" class="联系电话">8671-9999</a>
+					</div> <!-- .pull-left -->
+					<div class="pull-right">
+
+						<div class="social-links">
+
+							<a href="#"><i class="fa fa-renren"></i></a>
+							<a href="#"><i class="fa fa-weibo"></i></a>
+							<a href="#"><i class="fa fa-comments"></i></a>
+
+						</div>
+
+					</div> <!-- .pull-right -->
+
+					<div class="colophon">Copyright 2021 车情六处 设计自 <a href="http://www.baidu.com/" title="Designed by VandelayDesign.com" target="_blank">www.pixiv.com</a>版权所有</div>
+
+				</div> <!-- .container -->
+			</footer> <!-- .site-footer -->
+		</div>
+
+		<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+		<script src="{% static 'js/plugins.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
+
+	</body>
+
+</html>
